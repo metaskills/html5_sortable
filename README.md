@@ -3,16 +3,21 @@ HTML5 Sortable jQuery Plugin
 
 **[Demos & Documentation](http://farhadi.ir/projects/html5sortable)**
 
-Features
---------
+## Features
 * Less than 1KB (minified and gzipped).
 * Built using native HTML5 drag and drop API.
 * Supports both list and grid style layouts.
 * Similar API and behaviour to jquery-ui sortable plugin.
 * Works in IE 5.5+, Firefox 3.5+, Chrome 3+, Safari 3+ and, Opera 12+.
 
-Usage
------
+
+## Acknowledgment
+
+* Note orig author.
+
+
+## Usage
+
 Use `sortable` method to create a sortable list:
 
 ``` javascript
@@ -92,6 +97,5 @@ yepnope({
 });
 ```
 
-License
--------
+## License
 Released under the MIT license.
