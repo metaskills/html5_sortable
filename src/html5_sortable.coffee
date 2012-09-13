@@ -8,7 +8,6 @@
 
 $ = this.jQuery || this.Zepto
 
-
 # var dragging, placeholders = $();
 # $.fn.sortable = function(options) {
 # 	var method = String(options);

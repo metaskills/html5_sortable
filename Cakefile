@@ -29,16 +29,16 @@ task 'test:all', 'Run tests using all DOM query library versions', ->
     withDomLib baseDomQuery
 
 build = (callback) ->
-  b = (src, dest) ->
+  builder = (src, dest) ->
     (callback) ->
       coffee = spawn 'coffee', ['-c', '-o', dest, src]
       coffee.stderr.on 'data', (data) -> process.stderr.write data.toString()
       coffee.stdout.on 'data', (data) -> print data.toString()
       coffee.on 'exit', (code) -> callback?(code,code)
-  async.series [
-    b('src','lib'),
-    b('test/src','test/lib')
-  ], callback
+  async.parallel [
+    builder('src','lib'),
+    builder('test/src','test/lib')
+  ], (err, results) -> callback?() unless err
 
 test = (callback) ->
   testDir = './test'
