@@ -8,27 +8,27 @@ testCodes  = []
 baseDomQuery = 'jquery-1.8'
 
 task 'build', 'Build all coffee files', ->
-  build()
+  _build()
 
 task 'test', 'Run tests', ->
-  build -> withDomLib baseDomQuery, test
+  _build -> _withDomLib baseDomQuery, _test
 
 task 'test:jquery18', 'Run tests using jQuery 1.8', ->
-  build -> withDomLib 'jquery-1.8', test -> withDomLib baseDomQuery
+  _build -> _withDomLib 'jquery-1.8', -> _test -> _withDomLib baseDomQuery
 
 task 'test:jquery17', 'Run tests using jQuery 1.7', ->
-  build -> withDomLib 'jquery-1.7', test -> withDomLib baseDomQuery
+  _build -> _withDomLib 'jquery-1.7', -> _test -> _withDomLib baseDomQuery
 
 task 'test:zepto10', 'Run tests using Zepto 1.0', ->
-  build -> withDomLib 'zepto-1.0', test -> withDomLib baseDomQuery
+  _build -> _withDomLib 'zepto-1.0', -> _test -> _withDomLib baseDomQuery
 
 task 'test:all', 'Run tests using all DOM query library versions', ->
   try
-    build -> withDomLib 'jquery-1.8', test -> withDomLib 'jquery-1.7', test -> withDomLib 'zepto-1.0', test -> withDomLib baseDomQuery
+    _build -> _withDomLib 'zepto-1.0', -> _test -> _withDomLib 'jquery-1.7', -> _test -> _withDomLib baseDomQuery, -> _test 
   catch error
-    withDomLib baseDomQuery
+    _withDomLib baseDomQuery
 
-build = (callback) ->
+_build = (callback) ->
   builder = (src, dest) ->
     (callback) ->
       coffee = spawn 'coffee', ['-c', '-o', dest, src]
@@ -40,8 +40,8 @@ build = (callback) ->
     builder('test/src','test/lib')
   ], (err, results) -> callback?() unless err
 
-test = (callback) ->
-  testDir = './test'
+_test = (callback) ->
+  testDir = 'test/cases'
   testFiles = (file for file in fs.readdirSync testDir when /.*\.html$/.test(file))
   remaining = testFiles.length
   for file in testFiles
@@ -52,19 +52,19 @@ test = (callback) ->
     phantomjs.on 'exit', (code) ->
       testCodes.push code
       callback?() if --remaining is 0
-  exitWithTestsCode()
+  _exitWithTestsCode()
 
-withDomLib = (library, callback) ->
+_withDomLib = (library, callback) ->
   console.log "Using #{library} library..."
   process.chdir 'vendor'
   fs.unlinkSync 'dom-lib.js'
   fs.symlinkSync "#{library}.js", 'dom-lib.js'
-  process.chdir '../..'
+  process.chdir '..'
   callback?()
 
-exitWithTestsCode = ->
+_exitWithTestsCode = ->
   process.once 'exit', ->
     passed = testCodes.every (code) -> code is 0
     process.exit if passed then 0 else 1  
-  exitWithTestsCode = ->
+  _exitWithTestsCode = ->
 

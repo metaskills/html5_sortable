@@ -10,9 +10,9 @@
     "test": "cake test:all"
   },
   "dependencies": {
-    "async": "0.1.22"
   },
   "devDependencies": {
-    "coffee-script": "1.3.x"
+    "async": "0.1.22",
+    "coffee-script": "1.4.x"
   }
 }

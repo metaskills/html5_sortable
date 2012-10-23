@@ -1,6 +1,13 @@
 HTML5 Sortable jQuery Plugin
 ============================
 
+
+## TODO 
+
+* Make a bower package - https://github.com/twitter/bower
+
+
+
 **[Demos & Documentation](http://farhadi.ir/projects/html5sortable)**
 
 ## Features
