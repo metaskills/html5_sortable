@@ -46,10 +46,10 @@ _test = (callback) ->
   remaining = testFiles.length
   for file in testFiles
     filePath = fs.realpathSync "#{testDir}/#{file}"
-    phantomjs = spawn 'phantomjs', ['test/lib/run-jasmine.phantom.js', "file://#{filePath}"]
-    phantomjs.stdout.on 'data', (data) -> 
+    mochaPhantomJS = spawn 'mocha-phantomjs', ['-R', 'dot', filePath]
+    mochaPhantomJS.stdout.on 'data', (data) -> 
       print data.toString()
-    phantomjs.on 'exit', (code) ->
+    mochaPhantomJS.on 'exit', (code) ->
       testCodes.push code
       callback?() if --remaining is 0
   _exitWithTestsCode()

@@ -13,6 +13,10 @@
   },
   "devDependencies": {
     "async": "0.1.22",
-    "coffee-script": "1.4.x"
+    "coffee-script": "1.4.x",
+    "mocha-phantomjs": "1.0.x",
+    "mocha": "*",
+    "chai": "*",
+    "bower": "*"
   }
 }

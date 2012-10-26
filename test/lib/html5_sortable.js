@@ -3,7 +3,7 @@
 
   describe('Base behavior', function() {
     return it('must be true', function() {
-      return expect(true).toBeTruthy();
+      return expect(false).to.be["true"];
     });
   });
 
