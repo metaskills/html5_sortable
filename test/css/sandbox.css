@@ -1,0 +1,90 @@
+
+/* Sandbox */
+
+#sandbox * { 
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#sandbox { 
+  width: 400px !important;
+  height: 300px !important;
+  overflow: hidden !important;
+  position: fixed !important;
+  top: 80px !important;
+  right: 60px !important;
+  border: 1px solid #ccc !important;
+  padding: 5px 20px;
+  font-family: "Helvetica"; 
+  font-size: 12px;
+}
+
+#sandbox h2 { font-size: 18px; }
+
+
+/* Sortable (general) */
+
+#sandbox .sortable {
+  margin: auto;
+  padding: 0;
+  width: 300px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#sandbox .sortable li {
+  list-style: none;
+  border: 1px solid #ccc;
+  background: #f6f6f6;
+  color: #1c94c4;
+  margin: 5px;
+  padding: 5px;
+  height: 30px;
+}
+
+#sandbox .sortable li.disabled    { opacity: 0.5; }
+#sandbox .sortable li.highlight   { background: #fee25f; }
+#sandbox .sortable li.placeholder { border: 1px dashed #ccc; background: none; }
+
+.sortable-with-handles span { cursor: move; }
+
+
+/* Sortable (grid) */
+
+#sandbox .sortable-grid {
+  overflow: hidden;
+}
+
+#sandbox .sortable-grid li {
+  line-height: 70px;
+  float: left;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+}
+
+
+/* Sortable (handle) */
+
+#sandbox .sortable-with-handles span { cursor: move; }
+
+
+/* Sortable (connected) */
+
+#sandbox #sortable-connected {
+  width: 300px;
+  overflow: hidden;
+  margin: auto;
+}
+
+#sandbox .sortable-connected   { width: 150px; }
+#sandbox .sortable-connected-1 { float: left; }
+#sandbox .sortable-connected-2 { float: right; }
+
