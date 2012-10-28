@@ -13,11 +13,12 @@
   },
   "devDependencies": {
     "async": "0.1.22",
-    "coffee-script": "1.4.x",
-    "mocha-phantomjs": "1.0.x",
-    "grunt": "*",
-    "mocha": "*",
+    "bower": "*",
     "chai": "*",
-    "bower": "*"
+    "coffee-script": "1.4.x",
+    "grunt": "*",
+    "grunt-contrib-watch": "*",
+    "mocha": "*",
+    "mocha-phantomjs": "1.0.x"
   }
 }

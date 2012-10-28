@@ -24,7 +24,7 @@ task 'test:zepto10', 'Run tests using Zepto 1.0', ->
 
 task 'test:all', 'Run tests using all DOM query library versions', ->
   try
-    _build -> _withDomLib 'zepto-1.0', -> _test -> _withDomLib 'jquery-1.7', -> _test -> _withDomLib baseDomQuery, -> _test 
+    _build -> _withDomLib 'zepto-1.0', -> _test -> _withDomLib 'jquery-1.7', -> _test -> _withDomLib baseDomQuery, _test 
   catch error
     _withDomLib baseDomQuery
 
@@ -55,7 +55,7 @@ _test = (callback) ->
   _exitWithTestsCode()
 
 _withDomLib = (library, callback) ->
-  console.log "Using #{library} library..."
+  console.log "Using #{library} library..." if callback?
   process.chdir 'vendor'
   fs.unlinkSync 'dom-lib.js'
   fs.symlinkSync "#{library}.js", 'dom-lib.js'
